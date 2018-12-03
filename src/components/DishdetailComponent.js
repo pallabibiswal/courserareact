@@ -11,13 +11,15 @@ class DishDetail extends Component {
     renderDish = (dish) => {
         if (dish !== null) {
             return(
-                <Card>
-                    <CardImg width="100%" src={dish.image} alt={dish.name} />
-                    <CardBody>
-                        <CardTitle>{dish.name}</CardTitle>
-                        <CardText>{dish.description}</CardText>
-                    </CardBody>
-                </Card>
+                <div className="col-12 col-md-5 m-2">
+                    <Card>
+                        <CardImg width="100%" src={dish.image} alt={dish.name} />
+                        <CardBody>
+                            <CardTitle>{dish.name}</CardTitle>
+                            <CardText>{dish.description}</CardText>
+                        </CardBody>
+                    </Card>
+                </div>
             );
         } else {
             return(
@@ -26,10 +28,46 @@ class DishDetail extends Component {
         }
     };
 
+    renderComments = (dish) => {
+        if (dish !== null) {
+            if (dish.comments) {
+                const comments = dish.comments.map((obj) => {
+                    return (
+                        <div key={obj.id}>
+                            <li> {obj.comment} </li>
+                            <br />
+                            <li>-- {obj.author} , {obj.date} </li>
+                            <br />
+                        </div>
+                    );
+                });
+                return(
+                    <div className="col-12 col-md-5 m-2">
+                        <h4>Comments</h4>
+                        <ul className = "list-unstyled">
+                            {comments}
+                        </ul>
+                    </div>
+                );
+            } else {
+                return(
+                    <div></div>
+                );
+            }
+        } else {
+            return(
+                <div>
+
+                </div>
+            );
+        }
+    };
+
     render() {
         return(
-            <div className="col-12 col-md-5">
+            <div className="row col-12">
                 {this.renderDish(this.props.selectedDish)}
+                {this.renderComments(this.props.selectedDish)}
             </div>
         )
     }
