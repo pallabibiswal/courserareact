@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reactstrap';
 
-
+/**
+ * DishDetail class
+ */
 class DishDetail extends Component {
 
     constructor(props) {
         super(props);
     }
 
+    /**
+     * Render Dishes
+     * @param dish
+     * @returns {XML}
+     */
     renderDish = (dish) => {
         if (dish !== null) {
             return(
@@ -28,6 +35,11 @@ class DishDetail extends Component {
         }
     };
 
+    /**
+     * Render Comments
+     * @param dish
+     * @returns {XML}
+     */
     renderComments = (dish) => {
         if (dish !== null) {
             if (dish.comments) {

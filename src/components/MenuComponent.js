@@ -3,6 +3,9 @@ import { Media } from 'reactstrap';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reactstrap';
 import  DishDetail  from './DishdetailComponent';
 
+/**
+ * Menu Class
+ */
 class Menu extends Component {
 
     constructor(props) {
@@ -13,6 +16,10 @@ class Menu extends Component {
         };
     }
 
+    /**
+     * Select dish
+     * @param dish
+     */
     onDishSelect = (dish) => {
         this.setState(
             {
