@@ -3,14 +3,17 @@ import { Navbar , NavbarBrand} from 'reactstrap';
 import './App.css';
 import { DISHES } from './shared/dishes';
 import Main from './components/MainComponent';
+import { BrowserRouter } from 'react-router-dom'
 
 class App extends Component {
 
     render() {
         return (
-            <div>
-                <Main />
-            </div>
+            <BrowserRouter>
+                <div>
+                    <Main />
+                </div>
+            </BrowserRouter>
         );
     }
 }
