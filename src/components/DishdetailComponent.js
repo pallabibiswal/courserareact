@@ -50,7 +50,7 @@ const RenderComments = ({comments}) => {
 };
 const DishDetail = (props) => {
     return(
-        <div className="row col-12">
+        <div className="container">
             <div className="row">
                 <Breadcrumb>
                     <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
@@ -61,8 +61,10 @@ const DishDetail = (props) => {
                     <hr />
                 </div>
             </div>
-            <RenderDish dish = {props.dish} />
-            <RenderComments comments = {props.comment} />
+            <div className="row col-12">
+                <RenderDish dish = {props.dish} />
+                <RenderComments comments = {props.comment} />
+            </div>
         </div>
     )
 };
