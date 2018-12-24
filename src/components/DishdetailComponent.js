@@ -1,6 +1,8 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle,
+    Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import CommentForm from './CommentForm';
 
 const RenderDish = ({dish}) => {
     if (dish) {
@@ -39,6 +41,7 @@ const RenderComments = ({comments}) => {
                 <h4>Comments</h4>
                 <ul className = "list-unstyled">
                     {comment}
+                    <li> <CommentForm /> </li>
                 </ul>
             </div>
         );

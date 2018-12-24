@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Media } from 'reactstrap';
-import { Navbar , NavbarBrand} from 'reactstrap';
 import  DishDetail  from './DishdetailComponent';
 import Menu from './MenuComponent';
 import Header from './HeaderComponent';
@@ -21,10 +19,6 @@ const mapStateToProps = state => {
 };
 
 class Main extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const HomePage = () => {
