@@ -176,7 +176,7 @@ class CommentForm extends Component {
 
                     <ModalBody>
                         <div className="col-12">
-                            <LocalForm onSubmit={(values) => this.submitComment(values)}>
+                            <Form model="feedback" onSubmit={(values) => this.submitComment(values)}>
 
                                 <Row className="form-group">
                                     <Label htmlFor="rating" md={12}>
@@ -249,7 +249,7 @@ class CommentForm extends Component {
                                         </Button>
                                     </Col>
                                 </Row>
-                            </LocalForm>
+                            </Form>
                         </div>
                     </ModalBody>
                 </Modal>
