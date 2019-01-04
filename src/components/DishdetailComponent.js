@@ -3,8 +3,9 @@ import { Card, CardImg, CardText, CardBody, CardTitle,
     Breadcrumb, BreadcrumbItem, Label, Col, Row ,
     Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Control, Form, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 //validators
 const required = (val) => val && val.length;
@@ -22,7 +23,7 @@ const RenderDish = ({dish}) => {
         return(
             <div className="col-12 col-md-5 m-2">
                 <Card>
-                    <CardImg width="100%" src={dish.image} alt={dish.name} />
+                    <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
                     <CardBody>
                         <CardTitle>{dish.name}</CardTitle>
                         <CardText>{dish.description}</CardText>
