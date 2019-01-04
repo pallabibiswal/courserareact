@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Control, Form, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 //validators
 const required = (val) => val && val.length;
@@ -22,13 +23,19 @@ const RenderDish = ({dish}) => {
     if (dish) {
         return(
             <div className="col-12 col-md-5 m-2">
-                <Card>
-                    <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
-                    <CardBody>
-                        <CardTitle>{dish.name}</CardTitle>
-                        <CardText>{dish.description}</CardText>
-                    </CardBody>
-                </Card>
+                <FadeTransform
+                    in
+                    transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
+                    <Card>
+                        <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
+                        <CardBody>
+                            <CardTitle>{dish.name}</CardTitle>
+                            <CardText>{dish.description}</CardText>
+                        </CardBody>
+                    </Card>
+                </FadeTransform>
             </div>
         );
     } else {
@@ -46,16 +53,21 @@ const RenderDish = ({dish}) => {
  */
 const RenderComments = ({comments, postComment, dishId}) => {
     if (comments) {
-        const comment = comments.map((obj) => {
-            return (
-                <div key={obj.id}>
-                    <li> {obj.comment} </li>
-                    <br />
-                    <li>-- {obj.author} , {new Intl.DateTimeFormat('en-US', {year:'numeric', month:'short', day:'2-digit'}).format(new Date(Date.parse(obj.date)))} </li>
-                    <br />
-                </div>
-            );
-        });
+            const comment = comments.map((obj) => {
+                return (
+                    <Stagger in>
+                        <div key={obj.id}>
+                            <Fade in>
+                                <li> {obj.comment} </li>
+                                <br />
+                                <li>-- {obj.author} , {new Intl.DateTimeFormat('en-US', {year:'numeric', month:'short', day:'2-digit'}).format(new Date(Date.parse(obj.date)))} </li>
+                                <br />
+                            </Fade>
+                        </div>
+                    </Stagger>
+                );
+            });
+
         return(
             <div className="col-12 col-md-5 m-2">
                 <h4>Comments</h4>
