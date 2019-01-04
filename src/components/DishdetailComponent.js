@@ -44,7 +44,7 @@ const RenderDish = ({dish}) => {
  * @returns {XML}
  * @constructor
  */
-const RenderComments = ({comments, addComment, dishId}) => {
+const RenderComments = ({comments, postComment, dishId}) => {
     if (comments) {
         const comment = comments.map((obj) => {
             return (
@@ -61,7 +61,7 @@ const RenderComments = ({comments, addComment, dishId}) => {
                 <h4>Comments</h4>
                 <ul className = "list-unstyled">
                     {comment}
-                    <li> <CommentForm dishId = { dishId } addComment = { addComment } /> </li>
+                    <li> <CommentForm dishId = { dishId } postComment = { postComment } /> </li>
                 </ul>
             </div>
         );
@@ -114,7 +114,7 @@ const DishDetail = (props) => {
                 <div className="row col-12">
                     <RenderDish dish = {props.dish} />
                     <RenderComments comments = {props.comment}
-                                    addComment = {props.addComment}
+                                    postComment = {props.postComment}
                                     dishId = {props.dish.id}
                     />
                 </div>
@@ -156,7 +156,7 @@ class CommentForm extends Component {
      */
     submitComment = (values) => {
         console.log('Current State is: ' + JSON.stringify(values));
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
     };
 
     render() {
