@@ -228,5 +228,6 @@ export const postFeedback = (
             })
         .then(response => response.json())
         .then(response => dispatch(addComment(response)))
+        .then(response => {alert("Thank You For the FeedBack!" + JSON.stringify(response));})
         .catch(error =>  { console.log('post feedback', error.message); alert('Your feedback could not be posted\nError: '+error.message); });
 };
