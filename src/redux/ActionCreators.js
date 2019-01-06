@@ -185,25 +185,9 @@ export const addLeaders = (promos) => ({
     payload: promos
 });
 
-export const postFeedback = (
-    firstname,
-    lastname,
-    telnum,
-    email,
-    agree,
-    contactType,
-    message) => (dispatch) => {
+export const postFeedback = (feedback) => (dispatch) => {
 
-    const newFeedback = {
-        firstname: firstname,
-        lastname: lastname,
-        telnum: telnum,
-        email: email,
-        agree: agree,
-        contactType: contactType,
-        message: message
-    };
-
+    var newFeedback = JSON.parse(JSON.stringify(feedback));
     newFeedback.date = new Date().toISOString();
 
     return fetch(baseUrl + 'feedback' , {
